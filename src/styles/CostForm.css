@@ -21,13 +21,12 @@
     padding-right: 10px;
     cursor: pointer;
 }
-input, select,
-.createForm input, .createForm select, .createForm textarea, .createForm label{
+input, select, .createForm input, .createForm select, .createForm textarea, .createForm label{
     font-size: 16px;
     margin-bottom: 10px;
     padding: 4px 10px;
 }
-.dateInput,select,.amountInput, textarea {
+.dateInput,.createForm select, .amountInput,.createForm textarea {
     width: 100%;
     max-width: 400px;
     border: none;
@@ -55,7 +54,7 @@ select{
     box-shadow: 0 3px 8px black;
 }
 .createForm button:active{
-    box-shadow: 0 2px 2px black;
+    box-shadow: 0 0 2px black;
 }
 
 @media (max-width: 680px) {

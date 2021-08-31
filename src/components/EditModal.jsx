@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import '../styles/EditModal.css'
 import {editCost, toggleEditModal} from '../redux/actions'
 
 const EditModal = (props) => {
-    const [state, setState] = useState({...props.selectedCost, date:props.selectedCost.date.split('.').reverse().join('-')})
+    const [state, setState] = useState({
+        ...props.selectedCost,
+        date:props.selectedCost.date.split('.').reverse().join('-')
+    })
 
     const income = ['Заработная плата','Иные доходы']
     const expend = [
@@ -36,9 +40,10 @@ const EditModal = (props) => {
     }
 
     return (
-        <div style={{position:'absolute', width:'100%', height: '100%', backgroundColor: '#ffffffb3', top:'0px', left:'0px'}} className='editModal'>
-            <form onSubmit={editCoast} className='editForm' style={{backgroundColor:'grey'}}>
+        <div className='editModal'>
+            <form onSubmit={editCoast} className='editForm'>
                 <input
+                    className='editDateInput'
                     onChange={changeInputHandler}
                     name='date'
                     type='date'
@@ -46,30 +51,35 @@ const EditModal = (props) => {
                     required
                 />
 
-                <div className="radioWrapper">
-                    <label htmlFor='income'>Доход</label>
-                    <input
-                        onChange={changeInputHandler}
-                        name='income'
-                        value='income'
-                        type='radio'
-                        id='income'
-                        checked={state.income==='income'}
-                        required
-                    />
-                    <label htmlFor='expend'>Затраты</label>
-                    <input
-                        onChange={changeInputHandler}
-                        name='income'
-                        value='expend'
-                        type='radio'
-                        id='expend'
-                        checked={state.income==='expend'}
-                        required
-                    />
+                <div className="editRadioWrapper">
+                    <div>
+                        <label htmlFor='editIncome'>Доход</label>
+                        <input
+                            onChange={changeInputHandler}
+                            name='income'
+                            value='income'
+                            type='radio'
+                            id='editIncome'
+                            checked={state.income==='income'}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor='editExpend'>Затраты</label>
+                        <input
+                            onChange={changeInputHandler}
+                            name='income'
+                            value='expend'
+                            type='radio'
+                            id='editExpend'
+                            checked={state.income==='expend'}
+                            required
+                        />
+                    </div>
                 </div>
 
                 <select
+                    className='editSelect'
                     id='category'
                     onChange={changeInputHandler}
                     name='category'
@@ -89,6 +99,7 @@ const EditModal = (props) => {
                 </select>
 
                 <input
+                    className='editAmountInput'
                     onChange={changeInputHandler}
                     name='amount'
                     type='number'
@@ -98,6 +109,7 @@ const EditModal = (props) => {
                 />
 
                 <textarea
+                        className='editCommentInput'
                     onChange={changeInputHandler}
                     name='comment'
                     value={state.comment}
@@ -106,8 +118,8 @@ const EditModal = (props) => {
                     cols='25'
                 />
                 <div className='buttonsWrapper'>
-                    <button onClick={()=>props.toggleEditModal()}>Отмена</button>
-                    <button type='submit'>Сохранить</button>
+                    <button className='cancel' onClick={()=>props.toggleEditModal()}>Отмена</button>
+                    <button className='save' type='submit'>Сохранить</button>
                 </div>
             </form>
         </div>
