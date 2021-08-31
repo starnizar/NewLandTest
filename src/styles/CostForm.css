@@ -1,0 +1,65 @@
+.createForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 30%;
+    font-size: 16px;
+    margin-right: 20px;
+    padding: 10px;
+}
+.radioWrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.radioWrapper>div{
+    display: flex;
+    align-items: center;
+}
+.radioWrapper label{
+    padding-right: 10px;
+    cursor: pointer;
+}
+input, select,
+.createForm input, .createForm select, .createForm textarea, .createForm label{
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+}
+.dateInput,select,.amountInput, textarea {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 0 4px black;
+}
+select{
+    font-size: 16px;
+    padding: 4px 20px;
+}
+.createForm textarea{
+    font-size: 16px;
+    resize: none;
+}
+.createForm button {
+    max-width: 100px;
+    border: none;
+    padding: 5px;
+    box-shadow: 0 2px 5px black;
+    border-radius: 5px;
+    transition: .3s;
+    font-size: 16px;
+}
+.createForm button:hover{
+    box-shadow: 0 3px 8px black;
+}
+.createForm button:active{
+    box-shadow: 0 2px 2px black;
+}
+
+@media (max-width: 680px) {
+    .createForm {
+        margin-right: 0 ;
+    }
+}

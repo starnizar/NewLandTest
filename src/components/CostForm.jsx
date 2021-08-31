@@ -50,6 +50,7 @@ const CostForm = (props) => {
     return (
         <form onSubmit={createCost} className='createForm'>
             <input
+                className='dateInput'
                 onChange={changeInputHandler}
                 name='date'
                 type='date'
@@ -57,25 +58,29 @@ const CostForm = (props) => {
                 required
             />
 
-            <div className="radioWrapper">
-                <label htmlFor='income'>Доход</label>
-                <input
-                    onChange={changeInputHandler}
-                    name='income'
-                    value='income'
-                    type='radio'
-                    id='income'
-                    required
-                />
-                <label htmlFor='expend'>Затраты</label>
-                <input
-                    onChange={changeInputHandler}
-                    name='income'
-                    value='expend'
-                    type='radio'
-                    id='expend'
-                    required
-                />
+            <div className='radioWrapper'>
+                <div>
+                    <label htmlFor='income'>Доход</label>
+                    <input
+                        onChange={changeInputHandler}
+                        name='income'
+                        value='income'
+                        type='radio'
+                        id='income'
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor='expend'>Затраты</label>
+                    <input
+                        onChange={changeInputHandler}
+                        name='income'
+                        value='expend'
+                        type='radio'
+                        id='expend'
+                        required
+                    />
+                </div>
             </div>
 
             <select
@@ -98,6 +103,7 @@ const CostForm = (props) => {
             </select>
 
             <input
+                className='amountInput'
                 onChange={changeInputHandler}
                 name='amount'
                 type='number'
@@ -107,10 +113,11 @@ const CostForm = (props) => {
             />
 
             <textarea
+                className='commentInput'
                 onChange={changeInputHandler}
                 name='comment'
                 value={state.comment}
-                placeholder='Коментарий'
+                placeholder='Комментарий'
                 rows='5'
                 cols='25'
             />

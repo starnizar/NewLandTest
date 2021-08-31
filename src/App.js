@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css'
 import CostForm from './components/CostForm'
 import ShowCosts from './components/ShowCosts'
 

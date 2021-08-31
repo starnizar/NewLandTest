@@ -105,8 +105,10 @@ const EditModal = (props) => {
                     rows='5'
                     cols='25'
                 />
-
-                <button type='submit'>Добавить</button>
+                <div className='buttonsWrapper'>
+                    <button onClick={()=>props.toggleEditModal()}>Отмена</button>
+                    <button type='submit'>Сохранить</button>
+                </div>
             </form>
         </div>
     )
