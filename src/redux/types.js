@@ -1,0 +1,2 @@
+export const ADD_COST = 'COSTS/ADD_COST'
+export const TOGGLE_EDIT_MODAL = 'APP/TOGGLE_EDIT_MODAL'
