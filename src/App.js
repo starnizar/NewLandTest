@@ -5,6 +5,7 @@ import ShowCosts from './components/ShowCosts'
 function App() {
   return (
     <div className='App'>
+
         <CostForm />
         <ShowCosts />
     </div>

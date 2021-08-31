@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import '../styles/CostForm.css'
 import {addCost} from '../redux/actions'
 
 const CostForm = (props) => {
@@ -47,7 +48,7 @@ const CostForm = (props) => {
     }
 
     return (
-        <form onSubmit={createCost}>
+        <form onSubmit={createCost} className='createForm'>
             <input
                 onChange={changeInputHandler}
                 name='date'
