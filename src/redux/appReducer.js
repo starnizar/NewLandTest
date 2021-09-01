@@ -10,7 +10,6 @@ const initialState = {
     showEditModal: false,
     formAlert: false,
     editAlert: false,
-    filterAlert: false
 }
 
 export function appReducer(state = initialState, action) {

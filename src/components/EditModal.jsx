@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import '../styles/EditModal.css'
-import {editCost, showEditAlert, toggleEditModal} from '../redux/actions'
+import {editCost, removeCost, showEditAlert, toggleEditModal} from '../redux/actions'
 
 const EditModal = (props) => {
     const [state, setState] = useState({
@@ -39,6 +39,11 @@ const EditModal = (props) => {
         setState(prevState => ({...prevState, ...{
                 [event.target.name]: event.target.value
             }}))
+    }
+
+    const deleteCost = () => {
+        props.removeCost(props.selectedCost.id)
+        props.toggleEditModal()
     }
 
     return (
@@ -123,6 +128,7 @@ const EditModal = (props) => {
                 />
                 <div className='buttonsWrapper'>
                     <button className='cancel' onClick={()=>props.toggleEditModal()}>Отмена</button>
+                    <button className='delete' onClick={deleteCost}>Удалить</button>
                     <button className='save' type='submit'>Сохранить</button>
                 </div>
             </form>
@@ -138,7 +144,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    editCost, toggleEditModal, showEditAlert
+    editCost, toggleEditModal, showEditAlert, removeCost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditModal)

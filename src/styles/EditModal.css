@@ -64,7 +64,11 @@
     background: lightgreen;
 }
 .editModal button.cancel {
+    background: #f0dd80;
+}
+.editModal button.delete{
     background: lightcoral;
+    margin: 0 10px;
 }
 .editAlert{
     color: red;

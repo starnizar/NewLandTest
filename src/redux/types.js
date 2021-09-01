@@ -1,6 +1,7 @@
 export const ADD_COST = 'COSTS/ADD_COST'
 export const GET_COST = 'COSTS/GET_COST'
 export const EDIT_COST = 'COSTS/EDIT_COST'
+export const REMOVE_COST = 'COSTS/REMOVE_COST'
 export const UPDATE_COST = 'COSTS/UPDATE_COSTS'
 export const FILTER_COST = 'COSTS/FILTER_COSTS'
 export const SORT_CLICKED = 'COSTS/SORT_CLICKED'

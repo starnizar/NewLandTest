@@ -3,7 +3,7 @@ import {
     EDIT_COST,
     FILTER_COST,
     GET_COST,
-    HIDE_ALERT, HIDE_EDIT_ALERT, SHOW_ALERT, SHOW_EDIT_ALERT,
+    HIDE_ALERT, HIDE_EDIT_ALERT, REMOVE_COST, SHOW_ALERT, SHOW_EDIT_ALERT,
     SORT_CLICKED,
     TOGGLE_EDIT_MODAL,
     UPDATE_COST
@@ -27,6 +27,13 @@ export function editCost(editedCost) {
     return {
         type: EDIT_COST,
         payload: editedCost
+    }
+}
+
+export function removeCost(id) {
+    return {
+        type: REMOVE_COST,
+        payload: id
     }
 }
 

@@ -11,6 +11,8 @@ import {
 } from '../redux/actions'
 import TableRaw from './TableRaw'
 
+
+
 const ShowCosts = (props) => {
     const filterInput = useRef('')
 
@@ -78,8 +80,6 @@ const ShowCosts = (props) => {
                 type="text"
             />
 
-            {props.isFind && <p className='filterAlert'>Нет результата</p>}
-
             <table className='allCosts'>
                 <tbody>
                     <tr>
@@ -92,8 +92,10 @@ const ShowCosts = (props) => {
                         ? props.filteredCosts.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
                         : props.costs.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
                     }
+
                 </tbody>
             </table>
+            <p>Для сортировки, нажмите на название колонки</p>
         </div>
     )
 }
@@ -104,7 +106,6 @@ const mapStateToProps = state => {
         showEditModal: state.app.showEditModal,
         filteredCosts: state.costs.filteredCosts,
         isSortClicked: state.costs.isSortClicked,
-        isFind: state.app.filterAlert
     }
 }
 
