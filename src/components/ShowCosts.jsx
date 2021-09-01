@@ -74,14 +74,18 @@ const ShowCosts = (props) => {
 
     return (
         <div className='tableWrapper'>
+
             {props.showEditModal && <EditModal />}
-            <input
-                placeholder='Дата/Сумма/Название категории'
-                className='filterInput'
-                onChange={filterInputHandler}
-                ref={filterInput}
-                type="text"
-            />
+
+            <div className='filterWrapper'>
+                <input
+                    placeholder='Фильтр записей: Дата/Сумма/Название категории'
+                    className='filterInput'
+                    onChange={filterInputHandler}
+                    ref={filterInput}
+                    type="text"
+                />
+            </div>
 
             <table className='allCosts'>
                 <tbody>
@@ -99,7 +103,9 @@ const ShowCosts = (props) => {
                     }
                 </tbody>
             </table>
+
             {!filterInput.current.value && <p>Для сортировки, нажмите на название колонки</p>}
+
         </div>
     )
 }
