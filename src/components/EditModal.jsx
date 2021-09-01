@@ -122,7 +122,7 @@ const EditModal = (props) => {
                     onChange={changeInputHandler}
                     name='comment'
                     value={state.comment}
-                    placeholder='Коментарий'
+                    placeholder='Комментарий'
                     rows='5'
                     cols='25'
                 />

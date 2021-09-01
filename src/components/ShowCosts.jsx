@@ -92,7 +92,6 @@ const ShowCosts = (props) => {
                         ? props.filteredCosts.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
                         : props.costs.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
                     }
-
                 </tbody>
             </table>
             <p>Для сортировки, нажмите на название колонки</p>
