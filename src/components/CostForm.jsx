@@ -31,12 +31,16 @@ const CostForm = (props) => {
 
     const createCost = event => {
         event.preventDefault()
-        const newCost = {...state, id: Date.now().toString(), date: state.date.split('-').reverse().join('.')}
-        if (!newCost.category.trim()){
+        if (!state.category.trim()){
             return console.log('canceled category')
         }
-        if (newCost.amount < 1){
+        if (state.amount < 1){
             return console.log('canceled amount')
+        }
+        const newCost = {...state,
+            id: Date.now().toString(),
+            date: state.date.split('-').reverse().join('.'),
+            amount: state.income==='income'?+state.amount:-state.amount
         }
         props.addCost(newCost)
         setState(prevState => ({...prevState,category: '', amount:'', comment: ''}))
@@ -60,7 +64,7 @@ const CostForm = (props) => {
 
             <div className='radioWrapper'>
                 <div>
-                    <label htmlFor='income'>Доход</label>
+                    <label htmlFor='income'>Доходы</label>
                     <input
                         onChange={changeInputHandler}
                         name='income'

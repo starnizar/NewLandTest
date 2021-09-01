@@ -12,9 +12,18 @@
     background: cornflowerblue;
     width: 25%;
     height: 40px;
-}.tableWrapper table td{
+    transition: .3s;
+}
+.tableWrapper table th:not(:last-child):hover{
+    cursor: pointer;
+    box-shadow: inset 0 0 5px white;
+}
+.tableWrapper table th:not(:last-child):active{
+    box-shadow: inset 0 0 5px grey;
+}
+.tableWrapper table td{
      padding: 5px;
- }
+}
 .tableWrapper table tr{
     background: #c5d1ff;
     transition: .3s;

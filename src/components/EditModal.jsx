@@ -6,7 +6,10 @@ import {editCost, toggleEditModal} from '../redux/actions'
 const EditModal = (props) => {
     const [state, setState] = useState({
         ...props.selectedCost,
-        date:props.selectedCost.date.split('.').reverse().join('-')
+        date:props.selectedCost.date.split('.').reverse().join('-'),
+        amount: (props.selectedCost.amount < 1)
+            ? props.selectedCost.amount.toString().substr(1)
+            : props.selectedCost.amount
     })
 
     const income = ['Заработная плата','Иные доходы']
@@ -21,13 +24,17 @@ const EditModal = (props) => {
 
     const editCoast = event => {
         event.preventDefault()
-        const editedCost = {...state, date: state.date.split('-').reverse().join('.')}
         if (!state.category.trim()){
             return console.log('canceled category')
         }
         if (state.amount < 1){
             return console.log('canceled amount')
         }
+        const editedCost = {...state,
+            date: state.date.split('-').reverse().join('.'),
+            amount: state.income==='income'?+state.amount:-state.amount
+        }
+
         props.editCost(editedCost)
         props.toggleEditModal()
 

@@ -1,4 +1,4 @@
-import {ADD_COST, EDIT_COST, GET_COST, TOGGLE_EDIT_MODAL} from './types'
+import {ADD_COST, EDIT_COST, FILTER_COST, GET_COST, SORT_CLICKED, TOGGLE_EDIT_MODAL, UPDATE_COST} from './types'
 
 export function addCost(cost) {
     return {
@@ -18,6 +18,26 @@ export function editCost(editedCost) {
     return {
         type: EDIT_COST,
         payload: editedCost
+    }
+}
+
+export function updateCost(sortedCost) {
+    return {
+        type: UPDATE_COST,
+        payload: sortedCost
+    }
+}
+
+export function filterCost(filteredCost) {
+    return {
+        type: FILTER_COST,
+        payload: filteredCost
+    }
+}
+
+export function sortClicked() {
+    return {
+        type: SORT_CLICKED
     }
 }
 
