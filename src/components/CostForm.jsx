@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import '../styles/CostForm.css'
-import {addCost} from '../redux/actions'
+import {addCost, showAlert} from '../redux/actions'
 
 const CostForm = (props) => {
     const today = new Date()
@@ -31,11 +31,8 @@ const CostForm = (props) => {
 
     const createCost = event => {
         event.preventDefault()
-        if (!state.category.trim()){
-            return console.log('canceled category')
-        }
-        if (state.amount < 1){
-            return console.log('canceled amount')
+        if (state.amount <= 0){
+            return props.showAlert('Сумма не может быть меньше или равна нулю')
         }
         const newCost = {...state,
             id: Date.now().toString(),
@@ -116,6 +113,8 @@ const CostForm = (props) => {
                 required
             />
 
+            {props.isAlert && <p className='alert'>{props.isAlert}</p>}
+
             <textarea
                 className='commentInput'
                 onChange={changeInputHandler}
@@ -131,8 +130,14 @@ const CostForm = (props) => {
     )
 }
 
-const mapDispatchToProps = {
-    addCost
+const mapStateToProps = state => {
+    return {
+        isAlert: state.app.formAlert
+    }
 }
 
-export default connect(null, mapDispatchToProps)(CostForm)
+const mapDispatchToProps = {
+    addCost, showAlert
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CostForm)

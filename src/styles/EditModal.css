@@ -12,6 +12,7 @@
 .editForm{
     display: flex;
     width: fit-content;
+    max-width: 255px;
     flex-direction: column;
     padding: 10px;
     background: whitesmoke;
@@ -64,4 +65,12 @@
 }
 .editModal button.cancel {
     background: lightcoral;
+}
+.editAlert{
+    color: red;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px red;
 }

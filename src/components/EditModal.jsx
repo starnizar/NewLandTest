@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import '../styles/EditModal.css'
-import {editCost, toggleEditModal} from '../redux/actions'
+import {editCost, showEditAlert, toggleEditModal} from '../redux/actions'
 
 const EditModal = (props) => {
     const [state, setState] = useState({
@@ -24,20 +24,15 @@ const EditModal = (props) => {
 
     const editCoast = event => {
         event.preventDefault()
-        if (!state.category.trim()){
-            return console.log('canceled category')
-        }
-        if (state.amount < 1){
-            return console.log('canceled amount')
+        if (state.amount <= 0){
+            return props.showEditAlert('Сумма не может быть меньше или равна нулю')
         }
         const editedCost = {...state,
             date: state.date.split('-').reverse().join('.'),
             amount: state.income==='income'?+state.amount:-state.amount
         }
-
         props.editCost(editedCost)
         props.toggleEditModal()
-
     }
 
     const changeInputHandler = event => {
@@ -115,6 +110,8 @@ const EditModal = (props) => {
                     required
                 />
 
+                {props.isAlert && <p className='editAlert'>{props.isAlert}</p>}
+
                 <textarea
                         className='editCommentInput'
                     onChange={changeInputHandler}
@@ -135,12 +132,13 @@ const EditModal = (props) => {
 
 const mapStateToProps = state => {
     return {
-        selectedCost: state.costs.selectedCost
+        selectedCost: state.costs.selectedCost,
+        isAlert: state.app.editAlert
     }
 }
 
 const mapDispatchToProps = {
-    editCost, toggleEditModal
+    editCost, toggleEditModal, showEditAlert
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditModal)

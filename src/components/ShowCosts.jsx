@@ -2,7 +2,13 @@ import React, {useRef} from 'react'
 import {connect} from 'react-redux'
 import '../styles/ShowCost.css'
 import EditModal from './EditModal'
-import {filterCost, getCost, sortClicked, toggleEditModal, updateCost} from '../redux/actions'
+import {
+    filterCost,
+    getCost,
+    sortClicked,
+    toggleEditModal,
+    updateCost
+} from '../redux/actions'
 import TableRaw from './TableRaw'
 
 const ShowCosts = (props) => {
@@ -65,10 +71,15 @@ const ShowCosts = (props) => {
         <div className='tableWrapper'>
             {props.showEditModal && <EditModal />}
             <input
+                placeholder='Фильтр по любому полю'
+                className='filterInput'
                 onChange={filterInputHandler}
                 ref={filterInput}
                 type="text"
             />
+
+            {props.isFind && <p className='filterAlert'>Нет результата</p>}
+
             <table className='allCosts'>
                 <tbody>
                     <tr>
@@ -92,7 +103,8 @@ const mapStateToProps = state => {
         costs: state.costs.allCosts,
         showEditModal: state.app.showEditModal,
         filteredCosts: state.costs.filteredCosts,
-        isSortClicked: state.costs.isSortClicked
+        isSortClicked: state.costs.isSortClicked,
+        isFind: state.app.filterAlert
     }
 }
 
@@ -101,7 +113,7 @@ const mapDispatchToProps = {
     getCost,
     updateCost,
     sortClicked,
-    filterCost
+    filterCost,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowCosts)

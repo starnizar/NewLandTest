@@ -56,6 +56,15 @@ select{
 .createForm button:active{
     box-shadow: 0 0 2px black;
 }
+.alert{
+    width: 100%;
+    color: red;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px red;
+}
 
 @media (max-width: 680px) {
     .createForm {
