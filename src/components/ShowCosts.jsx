@@ -25,6 +25,7 @@ const ShowCosts = (props) => {
     const reverseDate = array => array.map(item => ({...item,
         date: item.date.split('.').reverse().join('.')
     }))
+
     const sortedByDateArr = () => {
         if (props.isSortClicked) {
             props.updateCost([...reverseDate(reverseDate(props.costs).sort((a, b) => a.date < b.date ? 1 : -1))])
@@ -34,6 +35,7 @@ const ShowCosts = (props) => {
             props.sortClicked()
         }
     }
+
     const sortedByCategory = () => {
         if (props.isSortClicked) {
             props.updateCost(props.costs.sort((a, b) => a.category > b.category ? 1 : -1))
@@ -43,6 +45,7 @@ const ShowCosts = (props) => {
             props.sortClicked()
         }
     }
+
     const sortedByAmount = () => {
         if (props.isSortClicked) {
             props.updateCost(props.costs.sort((a, b) => a.amount < b.amount ? 1 : -1))
@@ -73,7 +76,7 @@ const ShowCosts = (props) => {
         <div className='tableWrapper'>
             {props.showEditModal && <EditModal />}
             <input
-                placeholder='Фильтр по любому полю'
+                placeholder='Дата/Сумма/Название категории'
                 className='filterInput'
                 onChange={filterInputHandler}
                 ref={filterInput}
@@ -90,11 +93,13 @@ const ShowCosts = (props) => {
                     </tr>
                     {props.filteredCosts.length
                         ? props.filteredCosts.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
-                        : props.costs.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
+                        : filterInput.current.value
+                            ? <tr><td>Нет подходящей записи</td></tr>
+                            : props.costs.map(item => (<TableRaw key={item.id} editHandler={editHandler} item={item}/>))
                     }
                 </tbody>
             </table>
-            <p>Для сортировки, нажмите на название колонки</p>
+            {!filterInput.current.value && <p>Для сортировки, нажмите на название колонки</p>}
         </div>
     )
 }
