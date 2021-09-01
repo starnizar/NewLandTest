@@ -64,3 +64,9 @@
         border-radius: 5px;
     }
 }
+
+@media (max-width: 680px) {
+    .void{
+        margin-top: 20vh;
+    }
+}
