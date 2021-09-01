@@ -5,13 +5,13 @@ import {addCost} from '../redux/actions'
 
 const CostForm = (props) => {
     const today = new Date()
-    const dateNow = today.getDate().toString()
-    const monthNow = () => today.getMonth().toString().length === 1 ? '0'+(today.getMonth()+1) : today.getMonth()+1
+    const dateNow = today.getDate() < 10 ? '0' + today.getDate() : today.getDate()
+    const monthNow = today.getMonth() < 10 ? '0'+(today.getMonth()+1) : today.getMonth()+1
     const yearNow = today.getFullYear().toString()
 
     const [state, setState] = useState(
         {
-            date: `${yearNow}-${monthNow()}-${dateNow}`,
+            date: `${yearNow}-${monthNow}-${dateNow}`,
             income: '',
             category: '',
             amount: '',
